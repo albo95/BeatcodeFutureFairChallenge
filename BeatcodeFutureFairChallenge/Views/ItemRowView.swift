@@ -14,6 +14,7 @@ struct ItemRowView: View {
         HStack {
             Text(item.title)
                 .foregroundStyle(.primary)
+                .accessibilityHidden(true)
             
             Spacer()
             
@@ -25,6 +26,7 @@ struct ItemRowView: View {
         .background(
             backgroundView
         )
+        .accessibilityLabel("\(item.title), \(item.isFavourite ? "Favourite" : "Not favourite")")
         .accessibilityHint("Double tap to navigate to item details")
         .accessibilityAddTraits(.isButton)
     }
