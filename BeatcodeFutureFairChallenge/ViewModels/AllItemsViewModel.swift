@@ -14,11 +14,10 @@ class AllItemsViewModel {
     var items: [Item]
     
     init() {
-        let titles = (1...numberOfItems).map { "Cell number \($0)" }
-        let colors: [Color] = Color.itemPalette
+        let animalTitles = Array(AnimalsData.allAnimalNames.shuffled().prefix(numberOfItems))
         
-        items = titles.map { title in
-            Item(title: title, color: colors.randomElement()!)
+        items = animalTitles.map { title in
+            Item(title: title, color: .getRandomColorFromPaletteBlend())
         }
     }
 }
