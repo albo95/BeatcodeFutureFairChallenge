@@ -13,6 +13,7 @@ struct ItemRowView: View {
     var body: some View {
         HStack {
             Text(item.title)
+                .foregroundStyle(.primary)
             
             Spacer()
             
@@ -21,9 +22,16 @@ struct ItemRowView: View {
             } label: {
                 isFavouriteView
             }
+            
+            Image(systemName: "chevron.right")
+                .foregroundStyle(.secondary)
+            
         }
         .padding()
-        .background(item.color.gradient.opacity(0.7))
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(item.color.gradient.opacity(0.5))
+        )
     }
     
     private var isFavouriteView: some View {
@@ -38,5 +46,5 @@ struct ItemRowView: View {
 }
 
 #Preview {
-    ItemRowView(item: Item(title: "Cell number X", color: .yellow, isFavourite: false))
+    ItemRowView(item: Item(title: "Cell number X", color: .black, isFavourite: false))
 }
