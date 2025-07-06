@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IsFavouriteStarView: View {
     var isFavourite: Bool
-    var size: CGFloat = 24
+    var size: CGFloat = 26
     var weight: Font.Weight = .regular
     
     var body: some View {
@@ -22,9 +22,10 @@ struct IsFavouriteStarView: View {
                 .foregroundColor(.black)
                 .font(.system(size: size, weight: weight))
         }
+        .accessibilityHidden(true)
     }
 }
 
 #Preview {
-    IsFavouriteStarView(isFavourite: false, size: 24)
+    IsFavouriteStarView(isFavourite: false, size: 26)
 }

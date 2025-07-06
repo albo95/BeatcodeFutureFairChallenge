@@ -25,15 +25,19 @@ struct ItemRowView: View {
             
             Image(systemName: "chevron.right")
                 .foregroundStyle(.secondary)
-            
+                .accessibilityHidden(true)
         }
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(item.color.gradient.opacity(0.5))
-                .overlay(RoundedRectangle(cornerRadius: 12)
-                    .stroke(.primary, lineWidth: 2.5))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(.primary.opacity(0.7), lineWidth: 2)
+                )
         )
+        .accessibilityHint("Double tap to navigate to item details")
+        .accessibilityAddTraits(.isButton)
     }
 }
 
