@@ -23,6 +23,7 @@ struct ItemDetailView: View {
             } label: {
                 VStack(spacing: 16) {
                     IsFavouriteStarView(isFavourite: item.isFavourite, size: 200, weight: item.isFavourite ? .light : .ultraLight)
+                    
                     addRemoveFavouriteTextView
                 }
             }
@@ -47,5 +48,5 @@ struct ItemDetailView: View {
 
 
 #Preview {
-    ItemDetailView(item: Item(title: "Cell number X", color: .black, isFavourite: false))
+    ItemDetailView(item: Item(title: "Cat", color: .teal, isFavourite: true))
 }
