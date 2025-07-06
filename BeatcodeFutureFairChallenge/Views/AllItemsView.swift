@@ -21,7 +21,7 @@ struct AllItemsView: View {
                     }
                 }.padding()
             }
-            .navigationTitle("Items")
+            .navigationTitle("Animals")
             .navigationDestination(for: Item.self) { item in
                 ItemDetailView(item: item)
             }
