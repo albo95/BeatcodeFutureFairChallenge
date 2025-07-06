@@ -13,7 +13,7 @@ struct ItemDetailView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .foregroundStyle(item.color.gradient.opacity(0.5))
+                .foregroundStyle(item.color.gradient.opacity(0.4))
                 .ignoresSafeArea()
             
             Button {
@@ -22,7 +22,7 @@ struct ItemDetailView: View {
                 }
             } label: {
                 VStack(spacing: 16) {
-                    IsFavouriteStarView(isFavourite: item.isFavourite, size: 100, weight: .thin)
+                    IsFavouriteStarView(isFavourite: item.isFavourite, size: 200, weight: item.isFavourite ? .light : .ultraLight)
                     addRemoveFavouriteTextView
                 }
             }
@@ -40,7 +40,7 @@ struct ItemDetailView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.black, lineWidth: 2.7)
+                    .stroke(Color.black, lineWidth: item.isFavourite ? 5 : 3)
             )
     }
 }

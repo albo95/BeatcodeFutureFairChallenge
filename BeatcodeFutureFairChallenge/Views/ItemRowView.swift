@@ -18,9 +18,11 @@ struct ItemRowView: View {
             Spacer()
             
             Button {
-                item.isFavourite.toggle()
+                withAnimation {
+                    item.isFavourite.toggle()
+                }
             } label: {
-                IsFavouriteStarView(isFavourite: item.isFavourite)
+                IsFavouriteStarView(isFavourite: item.isFavourite, size: item.isFavourite ? 30 : 24, weight: item.isFavourite ? .regular : .light)
             }
             
             Image(systemName: "chevron.right")
@@ -30,10 +32,12 @@ struct ItemRowView: View {
         .padding()
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .fill(item.color.gradient.opacity(0.5))
+                .fill(item.color.gradient.opacity(0.4))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(item.isFavourite ? .yellow : .primary.opacity(0.7), lineWidth: 3)
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(item.isFavourite ? .yellow : .primary.opacity(0.7), lineWidth: item.isFavourite ? 5 : 3)
+                    }
                 )
         )
         .accessibilityHint("Double tap to navigate to item details")
