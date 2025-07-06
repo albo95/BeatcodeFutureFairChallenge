@@ -23,7 +23,7 @@ struct AllItemsView: View {
             }
             .navigationTitle("Items")
             .navigationDestination(for: Item.self) { item in
-                ItemDetailView()
+                ItemDetailView(item: item)
             }
         }
     }

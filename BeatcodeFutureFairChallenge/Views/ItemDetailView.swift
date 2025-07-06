@@ -8,12 +8,43 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    @Bindable var item: Item
+    
     var body: some View {
-        Text("Item Detail View")
+        ZStack {
+            Rectangle()
+                .foregroundStyle(item.color.gradient.opacity(0.5))
+                .ignoresSafeArea()
+            
+            Button {
+                withAnimation {
+                    item.isFavourite.toggle()
+                }
+            } label: {
+                VStack(spacing: 16) {
+                    IsFavouriteStarView(isFavourite: item.isFavourite, size: 100, weight: .thin)
+                    
+                    addRemoveFavouriteTextView
+                }
+            }
+            .navigationTitle(item.title)
+        }
+    }
+    
+    private var addRemoveFavouriteTextView: some View {
+        Text(item.isFavourite ? "Remove from Favourites" : "Add to Favourites")
+            .padding()
+        
+            .background(item.isFavourite ? Color.yellow.opacity(0.2) : Color.gray.opacity(0.2))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.black, lineWidth: 2.5)
+            )
     }
 }
 
 
 #Preview {
-    ItemDetailView()
+    ItemDetailView(item: Item(title: "Cell number X", color: .black, isFavourite: false))
 }
