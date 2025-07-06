@@ -9,7 +9,15 @@ import Foundation
 import SwiftUI
 
 @Observable
-class Item: Identifiable {
+class Item: Identifiable, Hashable {
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
     let id: UUID = UUID()
     let title: String
     let color: Color

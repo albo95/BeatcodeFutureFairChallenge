@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct AllItemsView: View {
+    @State var viewModel = AllItemsViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 12) {
+                    ForEach(viewModel.items) { item in
+                        NavigationLink(value: item) {
+                            ItemRowView(item: item)
+                        }
+                    }
+                }.padding()
+            }
+            .navigationTitle("Items")
+            .navigationDestination(for: Item.self) { item in
+                ItemDetailView()
+            }
         }
-        .padding()
     }
 }
 
