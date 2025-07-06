@@ -27,7 +27,7 @@ struct ItemRowView: View {
             backgroundView
         )
         .accessibilityLabel("\(item.title), \(item.isFavourite ? "Favourite" : "Not favourite")")
-        .accessibilityHint("Double tap to navigate to item details")
+        .accessibilityHint("Double tap to navigate to animal details")
         .accessibilityAddTraits(.isButton)
     }
     
