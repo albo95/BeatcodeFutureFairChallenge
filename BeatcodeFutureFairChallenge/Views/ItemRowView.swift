@@ -33,7 +33,7 @@ struct ItemRowView: View {
                 .fill(item.color.gradient.opacity(0.5))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
-                        .stroke(.primary.opacity(0.7), lineWidth: 2)
+                        .stroke(item.isFavourite ? .yellow : .primary.opacity(0.7), lineWidth: 3)
                 )
         )
         .accessibilityHint("Double tap to navigate to item details")
