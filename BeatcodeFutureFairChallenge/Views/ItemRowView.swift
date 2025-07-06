@@ -20,7 +20,7 @@ struct ItemRowView: View {
             Button {
                 item.isFavourite.toggle()
             } label: {
-                isFavouriteView
+                IsFavouriteStarView(isFavourite: item.isFavourite)
             }
             
             Image(systemName: "chevron.right")
@@ -31,17 +31,9 @@ struct ItemRowView: View {
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .fill(item.color.gradient.opacity(0.5))
+                .overlay(RoundedRectangle(cornerRadius: 12)
+                    .stroke(.primary, lineWidth: 2.5))
         )
-    }
-    
-    private var isFavouriteView: some View {
-        ZStack {
-            Image(systemName: "star.fill")
-                .foregroundColor(item.isFavourite ? .yellow : .white)
-            
-            Image(systemName: "star")
-                .foregroundColor(.black)
-        }
     }
 }
 
