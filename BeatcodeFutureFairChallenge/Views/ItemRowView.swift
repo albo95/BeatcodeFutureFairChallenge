@@ -17,31 +17,43 @@ struct ItemRowView: View {
             
             Spacer()
             
-            Button {
-                withAnimation {
-                    item.isFavourite.toggle()
-                }
-            } label: {
-                IsFavouriteStarView(isFavourite: item.isFavourite, size: item.isFavourite ? 30 : 24, weight: item.isFavourite ? .regular : .light)
-            }
+            isFavouriteButtonView
             
-            Image(systemName: "chevron.right")
-                .foregroundStyle(.secondary)
-                .accessibilityHidden(true)
+            navigationArrowView
         }
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(item.color.gradient.opacity(0.4))
-                .overlay(
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(item.isFavourite ? .yellow : .primary.opacity(0.7), lineWidth: item.isFavourite ? 5 : 3)
-                    }
-                )
+            backgroundView
         )
         .accessibilityHint("Double tap to navigate to item details")
         .accessibilityAddTraits(.isButton)
+    }
+    
+    
+    private var isFavouriteButtonView: some View {
+        Button {
+            withAnimation {
+                item.isFavourite.toggle()
+            }
+        } label: {
+            IsFavouriteStarView(isFavourite: item.isFavourite, size: item.isFavourite ? 30 : 24, weight: item.isFavourite ? .regular : .light)
+        }
+    }
+    
+    private var navigationArrowView: some View {
+        Image(systemName: "chevron.right")
+            .foregroundStyle(.secondary)
+            .accessibilityHidden(true)
+    }
+    
+    private var backgroundView: some View {
+        RoundedRectangle(cornerRadius: 12)
+            .fill(item.color.gradient.opacity(0.4))
+            .overlay(
+                ZStack {
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(item.isFavourite ? .yellow : .primary.opacity(0.7), lineWidth: item.isFavourite ? 5 : 3)
+                })
     }
 }
 
