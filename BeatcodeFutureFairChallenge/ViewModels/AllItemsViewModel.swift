@@ -10,7 +10,7 @@ import SwiftUI
 
 @Observable
 class AllItemsViewModel {
-    let numberOfItems: Int = 20
+    let numberOfItems: Int = 50
     var items: [Item]
     
     init() {
