@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AllItemsView.swift
 //  BeatcodeFutureFairChallenge
 //
 //  Created by Alberto Bruno on 06/07/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AllItemsView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +20,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AllItemsView()
 }
